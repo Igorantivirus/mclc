@@ -1,4 +1,7 @@
 CMakePresets.json
 .vscode
-.cwd
+cwd
 build
+
+.clang-format
+.clangd
