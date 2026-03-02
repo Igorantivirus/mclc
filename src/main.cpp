@@ -40,6 +40,10 @@ static void printHelp()
   --degree              аргумент в градусах. По умолчанию
   --radian              аргумент в радианах
 
+Опции вывода числа:
+  --fixed               числа выводятся в десятичной записи. По умолчанию
+  --scient              числа выводятся в научном формате
+
 Служебные опции:
   --help                показать эту справку
   --version             показать версию
@@ -93,6 +97,10 @@ int main(int argc, char **argv)
             converter.angleType = mathWorker::AngleOutputType::radians;
         else if (!std::strcmp(argv[i], "--degree"))
             converter.angleType = mathWorker::AngleOutputType::degrees;
+        else if (!std::strcmp(argv[i], "--fixed"))
+            converter.realOutType = mathWorker::RealOutputType::fixed;
+        else if (!std::strcmp(argv[i], "--scient"))
+            converter.realOutType = mathWorker::RealOutputType::scientific;
         else
         {
             if(i == argc - 1)
