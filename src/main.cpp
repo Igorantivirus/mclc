@@ -62,7 +62,7 @@ static void printVersion()
 
 int main(int argc, char **argv)
 {
-#if _WIN32
+#ifdef _WIN32
     std::system("chcp 65001 > nul");
 #endif
 
@@ -148,7 +148,7 @@ int main(int argc, char **argv)
         return 5;
     }
 
-    std::cout << converter.toString(result);
+    std::cout << converter.toString(result) << '\n';
 
     return 0;
 }
