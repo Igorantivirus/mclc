@@ -1,17 +1,16 @@
-#include "MathWorker/MathUtils/MathDefines.hpp"
-#include "MathWorker/Parse/ParseException.hpp"
-#include "MathWorker/Parse/Parser.hpp"
-#include "MathWorker/Parse/Tokenizer.hpp"
-#include "MathWorker/Signature/Signature.hpp"
-#include "MathWorker/Signature/SignatureGenerator.hpp"
-#include "MathWorker/StringConvert/ComplexStringConverter.hpp"
 #include <cstdlib>
 #include <cstring>
 #include <exception>
 #include <iostream>
-#include <string>
 
-#include <MathWorker/MathWorker.hpp>
+#include "MathWorker/MathUtils/MathDefines.hpp"
+#include "MathWorker/Parse/ParseException.hpp"
+#include "MathWorker/Parse/Parser.hpp"
+#include "MathWorker/Parse/Tokenizer.hpp"
+#include "MathWorker/Signature/FunctionConnector.hpp"
+#include "MathWorker/Signature/Signature.hpp"
+#include "MathWorker/Signature/SignatureGenerator.hpp"
+#include "MathWorker/StringConvert/ComplexStringConverter.hpp"
 
 static void printHelp()
 {
@@ -103,7 +102,7 @@ int main(int argc, char **argv)
             converter.realOutType = mathWorker::RealOutputType::scientific;
         else
         {
-            if(i == argc - 1)
+            if (i == argc - 1)
                 continue;
             try
             {
@@ -123,7 +122,7 @@ int main(int argc, char **argv)
             }
         }
     }
-    if(argv[argc - 1][0] == '-' && argv[argc - 1][1] == '-')
+    if (argv[argc - 1][0] == '-' && argv[argc - 1][1] == '-')
         return 0;
     mathWorker::BaseTokenizer tokenizer(signature);
     mathWorker::MathParser parser(tokenizer);
@@ -148,7 +147,7 @@ int main(int argc, char **argv)
         std::cout << "Unknown exception\n";
         return 5;
     }
-    
+
     std::cout << converter.toString(result);
 
     return 0;
